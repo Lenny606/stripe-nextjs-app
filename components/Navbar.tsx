@@ -18,6 +18,11 @@ const Navbar = () => {
             <li>Client Page</li>
           </Link>
         </div>
+        <div className="flex items-center">
+          <Link href="/billing">
+            <li>Billing Page</li>
+          </Link>
+        </div>
         <div className="flex gap-6 items-center">
           {!userId ? (
             <>
