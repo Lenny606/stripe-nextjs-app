@@ -40,6 +40,15 @@ const ClientPage = () => {
         }
     }
 
+    const editPaymentDetails = async () => {
+        const url = process.env.NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL_ID!
+        if (url) {
+            url + "prefilled_email=" + user?.emailAdressess[0]?.emailAdress
+        } else {
+            throw new Error('Failed to edit payments')
+        }
+    }
+
     return (
         <div className="h-full flex flex-col items-center justify-center text-2xl">
             Hello, {user?.firstName} welcome to Clerk

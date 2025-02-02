@@ -24,9 +24,7 @@ export const subscribe = async ({userId, email, priceId}: Props) => {
         if(!customer) {
             const customerNew = await stripe.customers.create({
                 email,
-                metadata: {
-                    userId
-                }
+
             })
             customerId = customerNew.id
         }
@@ -39,6 +37,9 @@ export const subscribe = async ({userId, email, priceId}: Props) => {
                 price: priceId,
                 quantity: 1
             }],
+            metadata: {
+                userId
+            },
             mode: 'subscription',
             success_url: `${process.env.NEXT_PUBLIC_URL}/payments/success`,
             cancel_url: `${process.env.NEXT_PUBLIC_URL}/payments/cancel`
